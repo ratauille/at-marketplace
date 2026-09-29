@@ -1,0 +1,97 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Luxury Villa Provisions | Chef Franko</title><meta name="description" content="Premium villa provisioning in Puerto Vallarta, Nuevo Nayarit and Punta Mita. Curated groceries, meats, seafood, bar and villa essentials.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>:root{--t:#087f83;--r:#9d1838;--ink:#102f35;--gold:#b99a58}html{scroll-behavior:smooth}body{color:var(--ink);background:#fff}.t{color:var(--t)}.r{color:var(--r)}.bt{background:var(--t)}.br{background:var(--r)}.gold{color:var(--gold)}.card{transition:.22s}.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px #00000012}.banner{background:linear-gradient(90deg,rgba(5,30,34,.93),rgba(5,30,34,.58)),url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1800&q=88') center/cover}.pill{border:1px solid #dbe8e8}.active{background:var(--t);color:#fff;border-color:var(--t)}</style></head>
+
+<body class="font-sans">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b"><div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center"><div><div class="text-xl font-semibold t">CHEF FRANKO</div><div class="text-xs tracking-[.22em] text-gray-500">LUXURY VILLA PROVISIONS</div></div><a href="#order" class="br text-white px-5 py-2 rounded-full font-semibold">SEND MY LIST</a></div></header>
+
+<section class="banner min-h-[560px] flex items-center text-white"><div class="max-w-7xl mx-auto px-5 py-20 w-full"><p class="gold uppercase tracking-[.28em] text-sm font-bold">Private Villa Provisioning</p><h1 class="text-5xl md:text-7xl font-light max-w-4xl mt-4">Your villa. Your pantry.<br><b>Effortlessly prepared.</b></h1><p class="max-w-2xl text-lg md:text-xl text-white/85 mt-6">A curated catalog of premium ingredients, fine meats, fresh seafood, gourmet pantry essentials and bar selections, sourced for your arrival.</p><div class="flex flex-wrap gap-3 mt-8"><a href="#catalog" class="bg-white text-[#102f35] px-7 py-3 rounded-full font-semibold">Build Your Provision List</a><a href="#service" class="border border-white/60 px-7 py-3 rounded-full">How It Works</a></div></div></section>
+
+<section id="service" class="bg-[#f4fbfb] py-14"><div class="max-w-6xl mx-auto px-5 grid md:grid-cols-3 gap-7 text-center"><div><div class="gold text-3xl">01</div><h3 class="font-semibold text-xl mt-2">Expert Procurement</h3><p class="text-gray-600 mt-2">Premium-quality selection and coordination, curated to international standards.</p></div><div><div class="gold text-3xl">02</div><h3 class="font-semibold text-xl mt-2">Cold-Chain Logistics</h3><p class="text-gray-600 mt-2">Specialized transport protects meats, seafood and delicate products.</p></div><div><div class="gold text-3xl">03</div><h3 class="font-semibold text-xl mt-2">White-Glove Service</h3><p class="text-gray-600 mt-2">Delivery, unpacking and organized placement in your villa kitchen and pantry.</p></div></div></section>
+
+<section id="catalog" class="max-w-7xl mx-auto px-5 py-16"><p class="r uppercase tracking-[.25em] text-xs font-bold">The Private Pantry</p><h2 class="text-4xl md:text-5xl font-light mt-3">Choose individual items</h2><p class="text-gray-600 mt-4 max-w-3xl">Add exactly what you want. Quantities can be adjusted in your list before sending the request.</p><div id="filters" class="flex flex-wrap gap-2 mt-8"></div><div id="products" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-9"></div></section>
+
+<section id="order" class="bg-[#092f35] text-white py-20"><div class="max-w-4xl mx-auto px-5"><div class="text-center mb-9"><p class="gold uppercase tracking-[.25em] text-xs font-bold">Your Provisioning Request</p><h2 class="text-4xl mt-3 font-light">Ready for Chef Franko</h2><p class="text-gray-300 mt-3">No online payment is required. Your request is reviewed and confirmed personally before purchasing.</p></div>
+
+<form action="https://formspree.io/f/mwlprdwr" method="POST" class="bg-white text-gray-800 rounded-3xl p-6 md:p-9" onsubmit="return prepareOrder()"><input type="hidden" name="_subject" value="New Luxury Villa Provisioning Request"><input type="hidden" id="itemsField" name="provisions"><div id="cart" class="space-y-3 mb-7 text-sm text-gray-500">Your provisioning list is empty.</div><div class="grid md:grid-cols-2 gap-4"><input required name="name" placeholder="Full name *" class="border rounded-xl p-4"><input required name="phone" placeholder="WhatsApp / Phone *" class="border rounded-xl p-4"><input required type="email" name="email" placeholder="Email *" class="border rounded-xl p-4"><input name="villa" placeholder="Villa / Resort" class="border rounded-xl p-4"><input type="date" name="delivery_date" class="border rounded-xl p-4 md:col-span-2"><textarea name="notes" rows="4" placeholder="Brands, allergies, substitutions or additional items..." class="border rounded-xl p-4 md:col-span-2"></textarea></div><button class="mt-7 w-full br text-white py-4 rounded-xl text-lg font-semibold">Send Provisioning Request</button><p class="text-xs text-gray-400 text-center mt-4">Catalog prices are reference prices. Availability and final details are confirmed personally.</p></form></div></section>
+
+<footer class="py-10"><div class="max-w-7xl mx-auto px-5 flex justify-between flex-wrap gap-3"><div><b class="t">Chef Franko</b><div class="text-sm text-gray-500">Luxury Villa Provisions</div></div><div class="text-sm text-gray-500">Puerto Vallarta · Nuevo Nayarit · Punta Mita</div></div></footer>
+
+<script>
+
+const P=[
+
+/* ===== PREMIUM SPIRITS (12) ===== */
+["Don Julio 1942 Tequila","Premium Spirits","750 ml","$187.00"],["Woodford Reserve Bourbon","Premium Spirits","750 ml","$48.00"],["Hendrick's Gin","Premium Spirits","750 ml","$49.00"],["Grey Goose Vodka","Premium Spirits","750 ml","$45.00"],["400 Conejos Oaxacan Mezcal","Premium Spirits","750 ml","$42.00"],
+["Clase Azul Reposado Tequila","Premium Spirits","750 ml","$198.00"],["Don Julio Blanco Tequila","Premium Spirits","750 ml","$55.00"],["Casamigos Blanco Tequila","Premium Spirits","750 ml","$62.00"],["The Macallan 12 Year Single Malt","Premium Spirits","750 ml","$105.00"],["Johnnie Walker Black Label","Premium Spirits","750 ml","$52.00"],["Hennessy VS Cognac","Premium Spirits","750 ml","$55.00"],["Campari Aperitivo","Premium Spirits","750 ml","$32.00"],
+
+/* ===== WINE & BUBBLES (11) ===== */
+["Cabernet Sauvignon","Wine & Bubbles","Napa / Caymus · 750 ml","$110.00"],["Imported & Craft Beers","Wine & Bubbles","Pack of 6","$18.00"],
+["Veuve Clicquot Brut Champagne","Wine & Bubbles","750 ml","$88.00"],["Moët & Chandon Impérial Brut","Wine & Bubbles","750 ml","$80.00"],["Dom Pérignon Vintage","Wine & Bubbles","750 ml","$290.00"],["Provence Rosé","Wine & Bubbles","Whispering Angel · 750 ml","$35.00"],["Sauvignon Blanc","Wine & Bubbles","Cloudy Bay · 750 ml","$42.00"],["Napa Valley Chardonnay","Wine & Bubbles","750 ml","$45.00"],["Pinot Noir","Wine & Bubbles","Meiomi · 750 ml","$32.00"],["Rioja Reserva Tempranillo","Wine & Bubbles","750 ml","$30.00"],["Valle de Guadalupe Red Blend","Wine & Bubbles","Baja California · 750 ml","$38.00"],
+
+/* ===== LUXURY WATERS (10) ===== */
+["Fiji Mineral Water","Luxury Waters","12 × 500 ml","$33.00"],["S.Pellegrino Mineral Water","Luxury Waters","6 × 750 ml","$22.00"],["Topo Chico Mineral Water","Luxury Waters","12 glass bottles","$26.00"],["Organic Coconut Water","Luxury Waters","6 × 1 L","$28.00"],
+["Perrier Sparkling Water","Luxury Waters","12 × 330 ml","$24.00"],["Acqua Panna Still Water","Luxury Waters","6 × 750 ml","$20.00"],["Evian Natural Spring Water","Luxury Waters","12 × 500 ml","$20.00"],["Voss Sparkling Water","Luxury Waters","6 × 800 ml glass","$28.00"],["Topo Chico Twist of Lime","Luxury Waters","12 glass bottles","$26.00"],["Essentia Alkaline Water","Luxury Waters","6 × 1 L","$22.00"],
+
+/* ===== MIXERS & ESSENTIALS (12) ===== */
+["Organic Gourmet Coffee","Mixers & Essentials","Oaxaca · 1 kg","$28.00"],["Plant-Based Milk","Mixers & Essentials","Almond / Oat · 6 × 1 L","$24.00"],["Soft Drinks","Mixers & Essentials","Coca-Cola / Diet Coke · 12 cans","$18.00"],["Cold-Pressed Juices","Mixers & Essentials","Orange / Green · 1.8 L","$16.00"],["Assorted Organic Teas","Mixers & Essentials","24 sachets","$12.00"],["Fever-Tree Tonic Water","Mixers & Essentials","4 × 200 ml","$10.00"],["Premium Ginger Beer","Mixers & Essentials","4 × 200 ml","$10.00"],
+["Fever-Tree Club Soda","Mixers & Essentials","4 × 200 ml","$10.00"],["Premium Ice Bags","Mixers & Essentials","2 × 10 lb","$12.00"],["Angostura Aromatic Bitters","Mixers & Essentials","200 ml","$16.00"],["Organic Agave Nectar","Mixers & Essentials","250 ml","$12.00"],["Fresh Limes & Lemons","Mixers & Essentials","1 kg","$9.00"],
+
+/* ===== OILS & CONDIMENTS (12) ===== */
+["Organic Extra Virgin Olive Oil","Oils & Condiments","750 ml","$24.00"],["Modena IGP Balsamic Vinegar","Oils & Condiments","250 ml","$22.00"],["Grade A Organic Maple Syrup","Oils & Condiments","375 ml","$16.00"],["100% Pure Bee Honey","Oils & Condiments","500 g","$14.00"],["Maldon Sea Salt Flakes","Oils & Condiments","240 g","$9.00"],["Organic Sriracha Hot Sauce","Oils & Condiments","300 ml","$8.00"],
+["White Truffle Oil","Oils & Condiments","100 ml","$22.00"],["Dijon Mustard","Oils & Condiments","Maille · 200 g","$8.00"],["Organic Tamari Soy Sauce","Oils & Condiments","250 ml","$9.00"],["Tellicherry Black Pepper Grinder","Oils & Condiments","Whole peppercorns","$10.00"],["Avocado Oil","Oils & Condiments","500 ml","$16.00"],["Oaxacan Mole Negro Paste","Oils & Condiments","500 g","$14.00"],
+
+/* ===== DAIRY & CHARCUTERIE (12) ===== */
+["Parmigiano Reggiano PDO","Dairy & Charcuterie","24 months · 300 g","$18.00"],["Artisanal French Salted Butter","Dairy & Charcuterie","250 g","$8.50"],["Serrano / Iberico Ham","Dairy & Charcuterie","Cebo de Campo","$28.00"],["Artisanal Fresh Burrata","Dairy & Charcuterie","Fresh cheese","$16.00"],["Preserved Black Truffle","Dairy & Charcuterie","Premium pantry","$35.00"],
+["Prosciutto di Parma DOP","Dairy & Charcuterie","Sliced · 100 g","$16.00"],["Manchego Cheese","Dairy & Charcuterie","12 months · 250 g","$16.00"],["Brie de Meaux","Dairy & Charcuterie","200 g","$14.00"],["Gruyère AOP","Dairy & Charcuterie","250 g","$18.00"],["Buffalo Mozzarella","Dairy & Charcuterie","250 g","$12.00"],["Iberico Chorizo","Dairy & Charcuterie","200 g","$14.00"],["Organic Free-Range Eggs","Dairy & Charcuterie","Dozen","$8.00"],
+
+/* ===== BAKERY & SNACKS (12) ===== */
+["Organic Nuts & Macadamias","Bakery & Snacks","500 g","$20.00"],["Organic Granola with Superfoods","Bakery & Snacks","500 g","$12.00"],["Gourmet Stuffed Olives","Bakery & Snacks","Kalamata · 350 g","$11.00"],["Artisanal Crackers","Bakery & Snacks","Pack","$10.00"],["Artisanal Sourdough Bread","Bakery & Snacks","Loaf","$9.00"],["Fine Origin Chocolate 70%","Bakery & Snacks","100 g","$7.50"],
+["Butter Croissants","Bakery & Snacks","6 pieces","$14.00"],["Brioche Loaf","Bakery & Snacks","Loaf","$8.00"],["Rosemary Focaccia","Bakery & Snacks","Loaf","$9.00"],["Marcona Almonds","Bakery & Snacks","200 g","$12.00"],["Truffle Potato Chips","Bakery & Snacks","150 g","$8.00"],["Organic Blue Corn Tortilla Chips","Bakery & Snacks","300 g","$7.00"],
+
+/* ===== FRESH & SPECIALTY (11) ===== */
+["Fresh Organic Berries","Fresh & Specialty","3 clamshells","$18.00"],["Organic Export-Grade Hass Avocados","Fresh & Specialty","1 kg","$10.00"],["Artisanal Italian Pasta","Fresh & Specialty","De Cecco / Rummo · 500 g","$6.50"],
+["Organic Baby Greens Mix","Fresh & Specialty","250 g","$8.00"],["Heirloom Cherry Tomatoes","Fresh & Specialty","500 g","$9.00"],["Fresh Herbs Bundle","Fresh & Specialty","Basil, rosemary & thyme","$12.00"],["Organic Strawberries","Fresh & Specialty","1 lb","$10.00"],["Ataulfo Mangoes","Fresh & Specialty","1 kg","$8.00"],["Fresh Green Asparagus","Fresh & Specialty","500 g","$9.00"],["Baby Potatoes","Fresh & Specialty","1 kg","$7.00"],["Tropical Fruit Selection","Fresh & Specialty","Papaya, pineapple & melon","$24.00"],
+
+/* ===== USDA PRIME & WAGYU (12) ===== */
+["Premium Angus Picanha","USDA Prime & Wagyu","1.5 kg","$65.00"],["USDA Choice+ Cowboy Steak","USDA Prime & Wagyu","600 g","$52.00"],["USDA Prime Ribeye","USDA Prime & Wagyu","400 g","$42.00"],["USDA Prime New York Strip","USDA Prime & Wagyu","350 g","$36.00"],["Wagyu / Angus Prime Burgers","USDA Prime & Wagyu","4 × 200 g","$34.00"],["Filet Mignon / Tenderloin","USDA Prime & Wagyu","250 g","$32.00"],["USDA Prime Tomahawk Steak","USDA Prime & Wagyu","Premium cut","$110.00"],
+["USDA Prime Skirt Steak (Arrachera)","USDA Prime & Wagyu","1 kg","$48.00"],["USDA Prime Beef Short Ribs","USDA Prime & Wagyu","1 kg","$42.00"],["USDA Prime T-Bone Steak","USDA Prime & Wagyu","700 g","$58.00"],["USDA Prime Flat Iron Steak","USDA Prime & Wagyu","400 g","$26.00"],["Japanese A5 Wagyu Striploin","USDA Prime & Wagyu","200 g","$140.00"],
+
+/* ===== POULTRY, PORK & LAMB (11) ===== */
+["New Zealand Rack of Lamb","Poultry Pork & Lamb","800 g","$58.00"],["Baby Back Pork Ribs","Poultry Pork & Lamb","1 kg","$28.00"],["Organic Chicken Breasts","Poultry Pork & Lamb","1 kg","$18.00"],
+["Frenched Lamb Chops","Poultry Pork & Lamb","600 g","$46.00"],["Pork Tenderloin","Poultry Pork & Lamb","1 kg","$22.00"],["Skin-On Pork Belly","Poultry Pork & Lamb","1 kg","$24.00"],["Whole Organic Free-Range Chicken","Poultry Pork & Lamb","1.8 kg","$24.00"],["Duck Breast (Magret)","Poultry Pork & Lamb","2 pieces · 500 g","$34.00"],["Organic Chicken Thighs","Poultry Pork & Lamb","1 kg","$16.00"],["Artisanal Sausages","Poultry Pork & Lamb","500 g","$16.00"],["Thick-Cut Smoked Bacon","Poultry Pork & Lamb","500 g","$16.00"],
+
+/* ===== FRESH FISH (11) ===== */
+["Wild Sea Bass / Lubina","Fresh Fish","1 kg","$58.00"],["Fresh Chilean Salmon","Fresh Fish","Sashimi grade · 1 kg","$45.00"],["Yellowfin Tuna","Fresh Fish","Grade A · 1 kg","$42.00"],["Hiramasa / Amberjack","Fresh Fish","Day catch · 1 kg","$38.00"],
+["Grouper Fillet (Mero)","Fresh Fish","Day catch · 1 kg","$40.00"],["Whole Red Snapper (Huachinango)","Fresh Fish","Day catch · 1.2 kg","$34.00"],["Mahi-Mahi (Dorado)","Fresh Fish","Fillet · 1 kg","$30.00"],["Wahoo (Peto)","Fresh Fish","Fillet · 1 kg","$32.00"],["Swordfish (Pez Espada)","Fresh Fish","Steaks · 1 kg","$36.00"],["Halibut Fillet","Fresh Fish","1 kg","$52.00"],["Smoked Salmon","Fresh Fish","Sliced · 300 g","$26.00"],
+
+/* ===== PREMIUM SEAFOOD (11) ===== */
+["Jumbo Sea Scallops","Premium Seafood","1 kg","$68.00"],["Pacific Lobster Tails","Premium Seafood","Fresh / frozen guaranteed","$75.00"],["Giant Sea Shrimp","Premium Seafood","U-10/U-12 · 1 kg","$48.00"],["Clean Fresh Octopus","Premium Seafood","1.5 kg","$42.00"],["Fresh Oysters in Shell","Premium Seafood","Dozen","$32.00"],["Chocolate Clams / Wine Clams","Premium Seafood","1 kg","$28.00"],
+["Alaskan King Crab Legs","Premium Seafood","1 kg","$110.00"],["Fresh Mussels","Premium Seafood","1 kg","$18.00"],["Fresh Calamari (Squid)","Premium Seafood","1 kg","$22.00"],["Lump Blue Crab Meat","Premium Seafood","454 g","$42.00"],["Osetra Caviar","Premium Seafood","30 g","$95.00"]
+
+];
+
+let cart={},cat="All"; const cats=["All",...new Set(P.map(x=>x[1]))];
+
+document.getElementById("filters").innerHTML=cats.map(c=>`<button onclick="filterCat('${c.replaceAll("'","\\'")}')" class="pill rounded-full px-4 py-2 text-sm ${c==="All"?"active":""}" data-cat="${c}">${c}</button>`).join("");
+
+function filterCat(c){cat=c;document.querySelectorAll("[data-cat]").forEach(b=>b.classList.toggle("active",b.dataset.cat===c));renderProducts()}
+
+function renderProducts(){document.getElementById("products").innerHTML=P.map((p,i)=>({p,i})).filter(x=>cat==="All"||x.p[1]===cat).map(({p,i})=>`<article class="card border rounded-2xl p-5 bg-white"><p class="r text-[11px] uppercase tracking-[.14em] font-bold">${p[1]}</p><h3 class="font-semibold text-lg mt-2">${p[0]}</h3><p class="text-gray-500 text-sm mt-2">${p[2]}</p><div class="flex items-end justify-between mt-5"><div><span class="text-xs text-gray-400">Catalog price</span><div class="t font-bold">${p[3]} USD</div></div><button type="button" onclick="add(${i})" class="bt text-white px-4 py-2 rounded-full text-sm font-semibold">+ Add</button></div></article>`).join("")}
+
+function add(i){cart[i]=(cart[i]||0)+1;renderCart();document.getElementById("order").scrollIntoView({behavior:"smooth",block:"start"})}
+
+function qty(i,n){cart[i]+=n;if(cart[i]<=0)delete cart[i];renderCart()}
+
+function renderCart(){let ids=Object.keys(cart);document.getElementById("cart").innerHTML=ids.length?ids.map(i=>`<div class="flex justify-between items-center border-b pb-3 gap-4"><div><b>${P[i][0]}</b><div class="text-xs text-gray-400">${P[i][2]} · ${P[i][3]} USD each</div></div><span class="shrink-0"><button type="button" onclick="qty(${i},-1)" class="bt text-white rounded-full w-8 h-8">−</button><b class="mx-3">${cart[i]}</b><button type="button" onclick="qty(${i},1)" class="bt text-white rounded-full w-8 h-8">+</button></span></div>`).join(""):"Your provisioning list is empty."}
+
+function prepareOrder(){let ids=Object.keys(cart);if(!ids.length){alert("Please add at least one item to your provisioning list.");return false}document.getElementById("itemsField").value=ids.map(i=>P[i][0]+" | "+P[i][2]+" | Qty "+cart[i]+" | "+P[i][3]+" USD each").join("\n");return true}
+
+renderProducts();
+
+</script></body></html>
