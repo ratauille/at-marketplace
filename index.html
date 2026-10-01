@@ -71,7 +71,7 @@ const P=[
 ["Grouper Fillet (Mero)","Fresh Fish","Day catch · 1 kg","$40.00"],["Whole Red Snapper (Huachinango)","Fresh Fish","Day catch · 1.2 kg","$34.00"],["Mahi-Mahi (Dorado)","Fresh Fish","Fillet · 1 kg","$30.00"],["Wahoo (Peto)","Fresh Fish","Fillet · 1 kg","$32.00"],["Swordfish (Pez Espada)","Fresh Fish","Steaks · 1 kg","$36.00"],["Halibut Fillet","Fresh Fish","1 kg","$52.00"],["Smoked Salmon","Fresh Fish","Sliced · 300 g","$26.00"],
 
 /* ===== PREMIUM SEAFOOD (11) ===== */
-["Jumbo Sea Scallops","Premium Seafood","1 kg","$68.00"],["Pacific Lobster Tails","Premium Seafood","Fresh / frozen guaranteed","$75.00"],["Giant Sea Shrimp","Premium Seafood","U-10/U-12 · 1 kg","$48.00"],["Clean Fresh Octopus","Premium Seafood","1.5 kg","$42.00"],["Fresh Oysters in Shell","Premium Seafood","Dozen","$32.00"],["Chocolate Clams / Wine Clams","Premium Seafood","1 kg","$28.00"],
+["Jumbo Sea Scallops","Premium Seafood","1 kg","$68.00"],["Pacific Lobster Tails","Premium Seafood","Fresh / frozen guaranteed","$75.00"],["Giant Shrimp U-10 / U-12","Premium Seafood","U-10/U-12 · 1 kg","$48.00"],["Clean Fresh Octopus","Premium Seafood","1.5 kg","$42.00"],["Fresh Oysters in Shell","Premium Seafood","Dozen","$32.00"],["Chocolate Clams / Wine Clams","Premium Seafood","1 kg","$28.00"],
 ["Alaskan King Crab Legs","Premium Seafood","1 kg","$110.00"],["Fresh Mussels","Premium Seafood","1 kg","$18.00"],["Fresh Calamari (Squid)","Premium Seafood","1 kg","$22.00"],["Lump Blue Crab Meat","Premium Seafood","454 g","$42.00"],["Osetra Caviar","Premium Seafood","30 g","$95.00"]
 
 ];
@@ -88,10 +88,12 @@ function add(i){cart[i]=(cart[i]||0)+1;renderCart();document.getElementById("ord
 
 function qty(i,n){cart[i]+=n;if(cart[i]<=0)delete cart[i];renderCart()}
 
-function renderCart(){let ids=Object.keys(cart);document.getElementById("cart").innerHTML=ids.length?ids.map(i=>`<div class="flex justify-between items-center border-b pb-3 gap-4"><div><b>${P[i][0]}</b><div class="text-xs text-gray-400">${P[i][2]} · ${P[i][3]} USD each</div></div><span class="shrink-0"><button type="button" onclick="qty(${i},-1)" class="bt text-white rounded-full w-8 h-8">−</button><b class="mx-3">${cart[i]}</b><button type="button" onclick="qty(${i},1)" class="bt text-white rounded-full w-8 h-8">+</button></span></div>`).join(""):"Your provisioning list is empty."}
+function renderCart(){let ids=Object.keys(cart);document.getElementById("cart").innerHTML=ids.length?ids.map(i=>`<div class="flex justify-between items-center border-b pb-3 gap-4"><div><b>${P[i][0]}</b><div class="text-xs text-gray-400">${P[i][2]} · ${P[i][3]==="Price confirmed in your quote"?P[i][3]:P[i][3]+" USD each"}</div></div><span class="shrink-0"><button type="button" onclick="qty(${i},-1)" class="bt text-white rounded-full w-8 h-8">−</button><b class="mx-3">${cart[i]}</b><button type="button" onclick="qty(${i},1)" class="bt text-white rounded-full w-8 h-8">+</button></span></div>`).join(""):"Your provisioning list is empty."}
 
-function prepareOrder(){let ids=Object.keys(cart);if(!ids.length){alert("Please add at least one item to your provisioning list.");return false}document.getElementById("itemsField").value=ids.map(i=>P[i][0]+" | "+P[i][2]+" | Qty "+cart[i]+" | "+P[i][3]+" USD each").join("\n");return true}
+function prepareOrder(){let ids=Object.keys(cart);if(!ids.length){alert("Please add at least one item to your provisioning list.");return false}document.getElementById("itemsField").value=ids.map(i=>P[i][0]+" | "+P[i][2]+" | Qty "+cart[i]+" | "+(P[i][3]==="Price confirmed in your quote"?P[i][3]:P[i][3]+" USD each")).join("\n");return true}
 
 renderProducts();
 
-</script></body></html>
+</script>
+<script src="catalog-enhancements.js"></script>
+</body></html>
