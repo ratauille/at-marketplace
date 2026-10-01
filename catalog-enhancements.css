@@ -240,9 +240,14 @@ header a {
 }
 
 @media (max-width: 480px) {
+  header > div {
+    gap: 0.5rem;
+  }
+
   header a {
-    padding-inline: 0.875rem;
-    font-size: 0.8125rem;
+    padding-inline: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: -0.02em;
   }
 
   .provision-family-content {

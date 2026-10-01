@@ -26,7 +26,7 @@
       category: "Fresh Seafood",
       name: "Premium Shrimp",
       description: "Premium shrimp selected for freshness, size and quality.",
-      image: null,
+      image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=900&q=80",
       products: [
         { sourceCategory: "Premium Seafood", sourceName: "Giant Shrimp U-10 / U-12" },
         { id: "shrimp-u15", name: "Jumbo Shrimp U-15", unit: "1 kg" },
@@ -41,7 +41,7 @@
       category: "Fresh Seafood",
       name: "Wild Catch of the Day",
       description: "Day-caught fish and chef-selected local specialties.",
-      image: null,
+      image: "https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&w=900&q=80",
       products: [
         { sourceCategory: "Fresh Fish", sourceName: "Whole Red Snapper (Huachinango)" },
         { sourceCategory: "Fresh Fish", sourceName: "Mahi-Mahi (Dorado)" },
@@ -58,7 +58,7 @@
       category: "USDA Prime & Wagyu",
       name: "Beef Tenderloin",
       description: "A considered selection of tenderloin cuts and premium grades.",
-      image: null,
+      image: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80",
       products: [
         { id: "choice-beef-tenderloin", name: "USDA Choice Beef Tenderloin", unit: "1 kg" },
         { id: "prime-beef-tenderloin", name: "USDA Prime Beef Tenderloin", unit: "1 kg" },
@@ -67,14 +67,97 @@
         { id: "wagyu-tenderloin", name: "Wagyu Tenderloin", unit: "1 kg" },
       ],
     },
+    {
+      id: "seasonal-tropical-fruit",
+      category: "Fresh Produce",
+      name: "Seasonal Tropical Fruit",
+      description: "Ripe tropical and seasonal fruit, selected for your stay.",
+      image: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=900&q=80",
+      products: [
+        { sourceCategory: "Fresh & Specialty", sourceName: "Fresh Organic Berries" },
+        { sourceCategory: "Fresh & Specialty", sourceName: "Organic Strawberries" },
+        { sourceCategory: "Fresh & Specialty", sourceName: "Ataulfo Mangoes" },
+        { sourceCategory: "Fresh & Specialty", sourceName: "Tropical Fruit Selection" },
+      ],
+    },
+    {
+      id: "fresh-vegetables",
+      category: "Fresh Produce",
+      name: "Fresh Vegetables",
+      description: "Seasonal produce chosen for freshness and villa cooking.",
+      image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80",
+      products: [
+        { sourceCategory: "Fresh & Specialty", sourceName: "Organic Baby Greens Mix" },
+        { sourceCategory: "Fresh & Specialty", sourceName: "Heirloom Cherry Tomatoes" },
+        { sourceCategory: "Fresh & Specialty", sourceName: "Fresh Herbs Bundle" },
+        { sourceCategory: "Fresh & Specialty", sourceName: "Fresh Green Asparagus" },
+        { sourceCategory: "Fresh & Specialty", sourceName: "Baby Potatoes" },
+      ],
+    },
+    {
+      id: "artisan-cheese-selection",
+      category: "Gourmet",
+      name: "Artisan Cheese Selection",
+      description: "A refined assortment of cheeses for villa dining and entertaining.",
+      image: "https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=900&q=80",
+      products: [
+        { sourceCategory: "Dairy & Charcuterie", sourceName: "Parmigiano Reggiano PDO" },
+        { sourceCategory: "Dairy & Charcuterie", sourceName: "Artisanal Fresh Burrata" },
+        { sourceCategory: "Dairy & Charcuterie", sourceName: "Manchego Cheese" },
+        { sourceCategory: "Dairy & Charcuterie", sourceName: "Brie de Meaux" },
+        { sourceCategory: "Dairy & Charcuterie", sourceName: "Gruyère AOP" },
+        { sourceCategory: "Dairy & Charcuterie", sourceName: "Buffalo Mozzarella" },
+      ],
+    },
+    {
+      id: "breakfast-essentials",
+      category: "Villa Essentials",
+      name: "Breakfast Essentials",
+      description: "Thoughtful breakfast provisions, ready for relaxed villa mornings.",
+      image: "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=80",
+      products: [
+        { sourceCategory: "Mixers & Essentials", sourceName: "Organic Gourmet Coffee" },
+        { sourceCategory: "Mixers & Essentials", sourceName: "Plant-Based Milk" },
+        { sourceCategory: "Mixers & Essentials", sourceName: "Cold-Pressed Juices" },
+        { sourceCategory: "Mixers & Essentials", sourceName: "Assorted Organic Teas" },
+        { sourceCategory: "Dairy & Charcuterie", sourceName: "Artisanal French Salted Butter" },
+        { sourceCategory: "Dairy & Charcuterie", sourceName: "Organic Free-Range Eggs" },
+        { sourceCategory: "Bakery & Snacks", sourceName: "Organic Granola with Superfoods" },
+        { sourceCategory: "Bakery & Snacks", sourceName: "Artisanal Sourdough Bread" },
+        { sourceCategory: "Bakery & Snacks", sourceName: "Butter Croissants" },
+      ],
+    },
+    {
+      id: "mexican-pantry",
+      category: "Local Selection",
+      name: "Mexican Pantry",
+      description: "A selection of local flavors and Mexican pantry staples.",
+      image: "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=900&q=80",
+      products: [
+        { sourceCategory: "Fresh & Specialty", sourceName: "Organic Export-Grade Hass Avocados" },
+        { sourceCategory: "Mixers & Essentials", sourceName: "Fresh Limes & Lemons" },
+        { sourceCategory: "Oils & Condiments", sourceName: "Oaxacan Mole Negro Paste" },
+        { sourceCategory: "Bakery & Snacks", sourceName: "Organic Blue Corn Tortilla Chips" },
+      ],
+    },
+    {
+      id: "custom-provisioning",
+      category: "Personal Request",
+      name: "Custom Provisioning",
+      description: "Looking for something specific? Add a request and we will source it.",
+      image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=900&q=80",
+      products: [
+        { id: "custom-provisioning-request", name: "Custom Provisioning Request", unit: "As requested" },
+      ],
+    },
   ];
 
-  function addQuoteProduct({ id, name, unit }) {
+  function addQuoteProduct({ id, name, unit }, category) {
     if (!id || itemIds.has(id)) {
       throw new Error(`Catalog product IDs must be unique: ${id || name}`);
     }
     itemIds.add(id);
-    const index = P.push([name, "Price confirmed in your quote", unit, quotePrice]) - 1;
+    const index = P.push([name, category, unit, quotePrice]) - 1;
     return { id, index, product: P[index] };
   }
 
@@ -99,7 +182,7 @@
         return { id, index, product: P[index] };
       }
 
-      const resolved = addQuoteProduct(item);
+      const resolved = addQuoteProduct(item, family.category);
       usedProductIndexes.add(resolved.index);
       return resolved;
     });
@@ -120,13 +203,23 @@
 
   remainingCategories.forEach((items, category) => {
     const slug = category.toLocaleLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    const image = {
+      "Dairy & Charcuterie": "https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=900&q=80",
+      "Fresh Fish": "https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&w=900&q=80",
+      "Fresh & Specialty": "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=900&q=80",
+      "Mixers & Essentials": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=80",
+      "Oils & Condiments": "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=900&q=80",
+      "Premium Seafood": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=900&q=80",
+      "Poultry Pork & Lamb": "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80",
+      "USDA Prime & Wagyu": "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80",
+      "Bakery & Snacks": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=80",
+    }[category];
     families.push({
       id: `category-${slug}`,
       category,
       name: category,
       description: "A curated selection for your villa, selected with care.",
-      // TODO: Cambiar por foto real de la base de datos o almacenamiento
-      image: null,
+      image,
       items: items.map(({ product, index }) => {
         const id = `catalog-product-${index}`;
         if (itemIds.has(id)) throw new Error(`Catalog product IDs must be unique: ${id}`);
@@ -169,7 +262,8 @@
 
   function familyMatches(family, query) {
     return [family.name, family.category, family.description]
-      .some((value) => value.toLocaleLowerCase().includes(query));
+      .some((value) => value.toLocaleLowerCase().includes(query)) ||
+      family.items.some((item) => item.product[1].toLocaleLowerCase().includes(query));
   }
 
   function itemMatches(item, query) {
@@ -204,7 +298,7 @@
     const isOpen = isSearchActive || openFamilies.has(family.id);
     const panelId = `provision-panel-${family.id}`;
     const image = family.image
-      ? `<img class="provision-family-image" src="${escapeHtml(family.image)}" alt="" loading="lazy">`
+      ? `<img class="provision-family-image" src="${escapeHtml(family.image)}" alt="${escapeHtml(family.name)}" loading="lazy">`
       : "";
     const itemList = matchingItems.map((item) => renderItem(item, family.id)).join("");
 
