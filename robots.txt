@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ratauille.github.io/at-marketplace/sitemap.xml

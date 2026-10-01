@@ -15,6 +15,49 @@ header a {
   white-space: nowrap;
 }
 
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  background-color: #102f35;
+  isolation: isolate;
+  color: #fff;
+}
+
+.hero-banner::before {
+  position: absolute;
+  z-index: 1;
+  background: linear-gradient(90deg, rgb(5 30 34 / 88%) 0%, rgb(5 30 34 / 70%) 54%, rgb(5 30 34 / 28%) 100%);
+  content: "";
+  inset: 0;
+}
+
+.hero-banner-image {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 52%;
+  inset: 0;
+}
+
+.hero-banner-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  color: #f0d28b;
+}
+
+.hero-banner h1 span {
+  color: #7bd3d0;
+}
+
+.hero-banner p:not(.hero-eyebrow) {
+  color: rgb(255 255 255 / 92%);
+}
+
 .catalog-search-wrap {
   display: grid;
   gap: 0.5rem;
@@ -227,6 +270,130 @@ header a {
   font-size: 0.8125rem;
 }
 
+.order-ticket {
+  margin: 0 0 1.75rem;
+  padding: 1.5rem;
+  border: 1px solid #dbe8e8;
+  border-radius: 1rem;
+  background: #fbfdfd;
+  color: #102f35;
+}
+
+.order-ticket[hidden] {
+  display: none;
+}
+
+.ticket-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #dbe8e8;
+}
+
+.ticket-eyebrow {
+  margin: 0;
+  color: #087f83;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ticket-heading h3 {
+  margin: 0.4rem 0 0;
+  color: #102f35;
+  font-size: 1.375rem;
+  font-weight: 600;
+}
+
+.ticket-reference {
+  margin: 0.25rem 0 0;
+  color: #586c70;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.ticket-print {
+  min-height: 2.75rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid #087f83;
+  border-radius: 999px;
+  background: #087f83;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  touch-action: manipulation;
+}
+
+.ticket-print:focus-visible {
+  outline: 3px solid #087f83;
+  outline-offset: 3px;
+}
+
+.ticket-customer-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.ticket-customer-details div {
+  min-width: 0;
+}
+
+.ticket-customer-details dt {
+  color: #586c70;
+  font-size: 0.75rem;
+}
+
+.ticket-customer-details dd {
+  margin: 0.15rem 0 0;
+  color: #102f35;
+  overflow-wrap: anywhere;
+}
+
+.ticket-line,
+.ticket-total {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 0;
+  border-top: 1px solid #e6eeee;
+}
+
+.ticket-line > div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.ticket-line span {
+  color: #586c70;
+  font-size: 0.875rem;
+}
+
+.ticket-line > strong:last-child,
+.ticket-total strong {
+  text-align: right;
+}
+
+.ticket-total {
+  color: #102f35;
+  font-weight: 600;
+}
+
+.ticket-disclaimer,
+.ticket-email-note {
+  margin: 0.75rem 0 0;
+  color: #586c70;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
 @media (min-width: 768px) {
   #products {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -275,11 +442,60 @@ header a {
     min-width: 7rem;
     padding-inline: 0.5rem;
   }
+
+  .order-ticket {
+    padding: 1rem;
+  }
+
+  .ticket-heading {
+    flex-direction: column;
+  }
+
+  .ticket-customer-details {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .provision-family,
   .provision-family-panel {
     transition: none;
+  }
+}
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #order-ticket,
+  #order-ticket * {
+    visibility: visible !important;
+  }
+
+  #order-ticket[hidden] {
+    display: none !important;
+  }
+
+  #order-ticket {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #fff;
+    color: #102f35;
+    font-size: 11pt;
+  }
+
+  .ticket-print,
+  .ticket-email-note {
+    display: none !important;
   }
 }

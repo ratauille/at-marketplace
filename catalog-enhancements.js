@@ -390,6 +390,167 @@
     renderCatalog();
   });
 
+  const orderForm = document.querySelector("#order form");
+  const cartContainer = document.getElementById("cart");
+  const receipt = document.createElement("section");
+  receipt.id = "order-ticket";
+  receipt.className = "order-ticket";
+  receipt.hidden = true;
+  receipt.setAttribute("aria-live", "polite");
+  cartContainer.insertAdjacentElement("afterend", receipt);
+
+  function hiddenField(name) {
+    let input = orderForm.querySelector(`[name="${name}"]`);
+    if (!input) {
+      input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      orderForm.appendChild(input);
+    }
+    return input;
+  }
+
+  const orderIdField = hiddenField("order_id");
+  const receiptField = hiddenField("receipt");
+  const subjectField = orderForm.querySelector('[name="_subject"]');
+  const baseSubject = subjectField.value;
+  let currentOrderId = null;
+
+  function newOrderId() {
+    const random = new Uint8Array(2);
+    if (window.crypto?.getRandomValues) window.crypto.getRandomValues(random);
+    else {
+      random[0] = Math.floor(Math.random() * 256);
+      random[1] = Math.floor(Math.random() * 256);
+    }
+    const date = new Date();
+    const dateCode = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, "0")}${String(date.getDate()).padStart(2, "0")}`;
+    return `CFP-${dateCode}-${Array.from(random, (byte) => byte.toString(16).padStart(2, "0")).join("").toUpperCase()}`;
+  }
+
+  function getReceiptData() {
+    const entries = Object.keys(cart).map((index) => {
+      const product = P[index];
+      const quantity = cart[index];
+      const amount = Number(String(product[3]).replace(/[^0-9.]/g, ""));
+      const hasPrice = Number.isFinite(amount) && amount > 0;
+      return { name: product[0], unit: product[2], quantity, price: product[3], hasPrice, amount };
+    });
+    const hasAllPrices = entries.every((entry) => entry.hasPrice);
+    const subtotal = hasAllPrices
+      ? entries.reduce((sum, entry) => sum + entry.amount * entry.quantity, 0)
+      : null;
+    const formatMoney = (amount) => new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(amount);
+    const customer = (name) => orderForm.elements.namedItem(name)?.value.trim() || "";
+    const lines = entries.map((entry) => {
+      const price = entry.hasPrice ? ` | ${entry.price} USD each` : ` | ${entry.price}`;
+      return `${entry.name} | ${entry.unit} | Qty ${entry.quantity}${price}`;
+    });
+    const customerDetails = {
+      name: customer("name"),
+      email: customer("email"),
+      phone: customer("phone"),
+      villa: customer("villa"),
+      deliveryDate: customer("delivery_date"),
+      notes: customer("notes"),
+    };
+
+    return {
+      entries,
+      hasAllPrices,
+      subtotal,
+      formatMoney,
+      customer: customerDetails,
+      text: [
+        `ORDER ${currentOrderId}`,
+        ...lines,
+        hasAllPrices ? `Reference subtotal: ${formatMoney(subtotal)} USD` : "Final pricing: confirmed in your quote",
+        "Provisioning request only. Final availability and pricing are confirmed personally.",
+        `Customer: ${customerDetails.name || "Not provided"}`,
+        `Email: ${customerDetails.email || "Not provided"}`,
+        `Phone: ${customerDetails.phone || "Not provided"}`,
+        `Villa: ${customerDetails.villa || "Not provided"}`,
+        `Delivery date: ${customerDetails.deliveryDate || "Not provided"}`,
+        `Notes: ${customerDetails.notes || "None"}`,
+      ].join("\n"),
+    };
+  }
+
+  function renderReceipt() {
+    const indexes = Object.keys(cart);
+    receipt.hidden = indexes.length === 0;
+    if (!indexes.length) {
+      currentOrderId = null;
+      orderIdField.value = "";
+      receiptField.value = "";
+      subjectField.value = baseSubject;
+      receipt.replaceChildren();
+      return;
+    }
+
+    if (!currentOrderId) currentOrderId = newOrderId();
+    const data = getReceiptData();
+    const customerRows = [
+      ["Name", data.customer.name],
+      ["Email", data.customer.email],
+      ["Phone", data.customer.phone],
+      ["Villa", data.customer.villa],
+      ["Delivery date", data.customer.deliveryDate],
+      ["Notes", data.customer.notes],
+    ].filter(([, value]) => value);
+    const customerMarkup = customerRows.length
+      ? `<dl class="ticket-customer-details">${customerRows.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join("")}</dl>`
+      : "";
+    const totalMarkup = data.hasAllPrices
+      ? `<div class="ticket-total"><span>Reference subtotal</span><strong>${escapeHtml(data.formatMoney(data.subtotal))} USD</strong></div>`
+      : '<div class="ticket-total"><span>Final pricing</span><strong>Confirmed in your quote</strong></div>';
+
+    receipt.innerHTML = `
+      <div class="ticket-heading">
+        <div>
+          <p class="ticket-eyebrow">Chef Franko · Luxury Villa Provisions</p>
+          <h3>Provisioning request</h3>
+          <p class="ticket-reference">${escapeHtml(currentOrderId)}</p>
+        </div>
+        <button type="button" class="ticket-print" id="print-order-ticket">Print / Save as PDF</button>
+      </div>
+      ${customerMarkup}
+      <div class="ticket-lines">
+        ${data.entries.map((entry) => `
+          <div class="ticket-line">
+            <div><strong>${escapeHtml(entry.name)}</strong><span>${escapeHtml(entry.unit)} · Qty ${entry.quantity}</span></div>
+            <strong>${entry.hasPrice ? `${escapeHtml(data.formatMoney(entry.amount * entry.quantity))}` : escapeHtml(entry.price)}</strong>
+          </div>`).join("")}
+      </div>
+      ${totalMarkup}
+      <p class="ticket-disclaimer">This is a provisioning request, not a payment receipt. Availability and final pricing are confirmed personally.</p>
+      <p class="ticket-email-note">This ticket is included in the Formspree email notification when notifications are enabled.</p>`;
+
+    orderIdField.value = currentOrderId;
+    receiptField.value = data.text;
+    subjectField.value = `${currentOrderId} | ${baseSubject}`;
+    receipt.querySelector("#print-order-ticket").addEventListener("click", () => window.print());
+  }
+
+  const originalRenderCart = window.renderCart;
+  window.renderCart = function renderCartWithTicket() {
+    originalRenderCart();
+    renderReceipt();
+  };
+
+  const originalPrepareOrder = window.prepareOrder;
+  window.prepareOrder = function prepareOrderWithTicket() {
+    const canSubmit = originalPrepareOrder();
+    if (canSubmit) renderReceipt();
+    return canSubmit;
+  };
+
+  orderForm.addEventListener("input", renderReceipt);
+  renderReceipt();
+
   window.renderProducts = renderCatalog;
   renderCatalog();
 })();
